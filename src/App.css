@@ -1,0 +1,39 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+div {
+  aspect-ratio: 1
+}
+
+.container {
+  --m: 12;
+  --d: 80px;
+  /* image size */
+  --rel: 0.8;
+  /* how much extra space we want between images, 1 = 1 image size */
+  --ba: 1turn/var(--m);
+  --r: calc(.5*(1 + var(--rel))*var(--d)/tan(.5*var(--ba)));
+  /* circle radius */
+  display: grid;
+  width: calc(2*var(--r) + var(--d));
+  /* container size */
+}
+
+.container .led {
+  grid-area: 1/ 1;
+  place-self: center;
+  height: var(--d);
+  width: var(--d);
+  border-radius: var(--d);
+  --ca: calc(var(--i)*var(--ba));
+  transform:
+    rotate(var(--ca)) translate(var(--r)) rotate(calc(-1*var(--ca)))
+}
+
+img {
+  max-width: 100%
+}
